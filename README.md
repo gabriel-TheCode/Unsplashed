@@ -25,11 +25,9 @@ Unsplashed is a lightweight app to demonstrate the usage of Unsplash API to retr
     <th>Demo</th>
   </tr>
   <tr>
-    <td>
-    <video controls width="250"> 
-      <source src="unsplashed.mp4" type="video/mp4" />
-    </video>
-    </td>  </tr>
+    <td><img src="unsplashed.gif"/></td>
+
+  </tr>
    </table>
 
 <a name="specifications"></a>
