@@ -53,7 +53,6 @@ Unsplashed is a lightweight app to demonstrate the usage of Unsplash API to retr
 - [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit2](https://github.com/square/retrofit)
-- [RecyclerView Animators](https://github.com/wasabeef/recyclerview-animators)
 
 
 <a name="installation"></a>
