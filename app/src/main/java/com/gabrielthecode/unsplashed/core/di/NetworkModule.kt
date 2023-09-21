@@ -29,6 +29,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL = "https://api.unsplash.com/"
+    private const val CLIENT_ID_QUERY = "client_id"
     private const val REQUEST_TIMEOUT = 60
 
     @Singleton
@@ -95,7 +96,8 @@ object NetworkModule {
         override fun intercept(chain: Chain): Response {
             val request = chain.request()
             val newUrl =
-                request.url.newBuilder().addQueryParameter("client_id", BuildConfig.CLIENT_ID).build()
+                request.url.newBuilder().addQueryParameter(CLIENT_ID_QUERY, BuildConfig.CLIENT_ID)
+                    .build()
             val newRequest = request.newBuilder().url(newUrl).build()
             return chain.proceed(newRequest)
         }

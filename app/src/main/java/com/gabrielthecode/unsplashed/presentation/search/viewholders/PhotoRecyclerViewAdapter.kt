@@ -16,7 +16,8 @@ class PhotoRecyclerViewAdapter(private val listener: PhotoOnClickListener) :
     private var photos: List<PhotoUiModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        binding = PhotoItemAdapterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding =
+            PhotoItemAdapterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NewsViewHolder(binding)
     }
 
@@ -38,9 +39,9 @@ class PhotoRecyclerViewAdapter(private val listener: PhotoOnClickListener) :
                 listener.openPhoto(photo)
             }
 
-           photoImageView.setOnLongClickListener {
+            photoImageView.setOnLongClickListener {
                 listener.showImageFullResolution(photo, it)
-               return@setOnLongClickListener true
+                return@setOnLongClickListener true
             }
         }
     }
