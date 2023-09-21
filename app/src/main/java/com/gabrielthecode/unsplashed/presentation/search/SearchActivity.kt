@@ -19,7 +19,6 @@ import com.gabrielthecode.unsplashed.presentation.search.viewholders.PhotoRecycl
 import com.gabrielthecode.unsplashed.presentation.search.viewholders.PhotoUiModel
 import com.gabrielthecode.unsplashed.presentation.search.viewholders.toUiModels
 import dagger.hilt.android.AndroidEntryPoint
-import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter
 
 @AndroidEntryPoint
 class SearchActivity : AppCompatActivity(), PhotoOnClickListener {
@@ -29,7 +28,7 @@ class SearchActivity : AppCompatActivity(), PhotoOnClickListener {
     private lateinit var recyclerViewAdapter: PhotoRecyclerViewAdapter
     private var PhotoOnClickListener: PhotoOnClickListener = this
     private var previewManager: PreviewManager? = null
-    val defaultQuery = "Creative"
+    private val defaultQuery = "Creative"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,7 +123,7 @@ class SearchActivity : AppCompatActivity(), PhotoOnClickListener {
         recyclerViewAdapter = PhotoRecyclerViewAdapter(PhotoOnClickListener)
         binding?.recyclerView?.apply {
             layoutManager = GridLayoutManager(this@SearchActivity, 3)
-            adapter = SlideInBottomAnimationAdapter(recyclerViewAdapter)
+            adapter = recyclerViewAdapter
         }
     }
 
