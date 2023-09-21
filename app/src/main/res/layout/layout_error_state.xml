@@ -2,11 +2,12 @@
 <LinearLayout
     android:id="@+id/layout_bad_state"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:visibility="gone"
     tools:visibility="visible"
+    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -15,8 +16,8 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:src="@drawable/speech_bubble"
-        android:layout_marginTop="30dp"/>
+        android:src="@drawable/speech_bubble"/>
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_state"
         android:layout_width="wrap_content"

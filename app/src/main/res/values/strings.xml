@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">Unsplashed</string>
     <string name="download">Download</string>
-    <string name="retry">Retry</string>
-    <string name="error_occurred">OOps, something went wrong</string>
-    <string name="network_error">Network error</string>
-    <string name="splash_caption">Your best pictures everywhere, every time</string>
+    <string name="error_occurred">Oops, something went wrong</string>
     <string name="resolution">Resolution : %s</string>
     <string name="dominant_color">Dominant color : %s</string>
     <string name="created_at">Creation date : %s</string>
     <string name="search_photos">Search Photos</string>
     <string name="coming_soon">Coming soon ! 🌄</string>
-    <string name="an_error_occured">An error occured, please retry later</string>
 </resources>
