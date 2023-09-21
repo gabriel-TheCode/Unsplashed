@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageHeader"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shadow_shape_transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/authorLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_person_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/authorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/white"
+                    android:text="John Doe" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/closeContainerLayout"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="@color/white"
+                app:srcCompat="@drawable/baseline_arrow_back_24" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:maxLines="2"
+            android:textSize="28sp"
+            android:textAppearance="@font/ubuntu_bold"
+            app:layout_constraintEnd_toStartOf="@id/downloadImageButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageHeader"
+            tools:text="A Random Text" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/downloadImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:ellipsize="end"
+            android:letterSpacing="-0.02"
+            android:lines="1"
+            app:icon="@drawable/baseline_download_24"
+            android:text="@string/download"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/descriptionTextView"
+            app:layout_constraintBottom_toBottomOf="@id/descriptionTextView"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/sizeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="22dp"
+            android:layout_marginHorizontal="16dp"
+            android:justificationMode="inter_word"
+            tools:text="@tools:sample/lorem"
+            android:maxLines="8"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/colorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:justificationMode="inter_word"
+            android:maxLines="8"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sizeTextView"
+            tools:text="@tools:sample/lorem" />
+
+        <ImageView
+            android:id="@+id/colorImageView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            app:layout_constraintStart_toEndOf="@id/colorTextView"
+            app:layout_constraintTop_toTopOf="@id/colorTextView"
+            app:layout_constraintBottom_toBottomOf="@id/colorTextView"
+            android:layout_marginHorizontal="4dp"
+            android:src="@drawable/outline_color_lens_24"
+            app:tint="@color/white" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:justificationMode="inter_word"
+            android:maxLines="8"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/colorTextView"
+            tools:text="@tools:sample/lorem/random" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
