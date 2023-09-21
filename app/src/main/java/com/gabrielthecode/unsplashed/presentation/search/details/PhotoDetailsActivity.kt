@@ -23,9 +23,9 @@ class PhotoDetailsActivity : AppCompatActivity() {
         binding = ActivityPhotoDetailsBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        photo = if(supportsAndroid13()){
+        photo = if (supportsAndroid13()) {
             intent.extras?.getParcelable(PHOTO_UI_MODEL, PhotoUiModel::class.java)
-        }else {
+        } else {
             intent.extras?.getParcelable(PHOTO_UI_MODEL)
         }
 
@@ -59,7 +59,11 @@ class PhotoDetailsActivity : AppCompatActivity() {
             }
 
             downloadImageButton.setOnClickListener {
-                Toast.makeText(this@PhotoDetailsActivity, getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@PhotoDetailsActivity,
+                    getString(R.string.coming_soon),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

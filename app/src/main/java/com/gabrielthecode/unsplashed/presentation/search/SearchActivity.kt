@@ -98,7 +98,8 @@ class SearchActivity : AppCompatActivity(), PhotoOnClickListener {
     private fun initViews() {
         binding?.apply {
             refreshLayout.setOnRefreshListener {
-                val query = searchViewKeyword.query.toString().takeIf { it.isNotEmpty() } ?: defaultQuery
+                val query =
+                    searchViewKeyword.query.toString().takeIf { it.isNotEmpty() } ?: defaultQuery
                 viewModel.searchPhotos(query)
             }
 

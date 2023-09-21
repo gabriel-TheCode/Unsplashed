@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 interface RemoteDataSource {
     suspend fun searchPhotos(
-       query: String
+        query: String
     ): SearchDomainModel
 }
 

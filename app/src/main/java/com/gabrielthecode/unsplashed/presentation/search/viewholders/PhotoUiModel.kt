@@ -30,5 +30,5 @@ fun SearchDomainModel.toUiModels(): List<PhotoUiModel> {
             authorName = it.user.name ?: "Unknown Author",
             creationDate = it.createdAt ?: "N/A"
         )
-    }?: listOf()
+    } ?: listOf()
 }
