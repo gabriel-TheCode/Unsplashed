@@ -11,7 +11,6 @@ class RemoteDataSourceImpl @Inject constructor(
 	private val apiService: UnsplashApiRemoteService,
 	private val searchMapper: SearchMapper,
 ) : RemoteDataSource {
-
 	override suspend fun searchPhotos(
 		query: String
 	): SearchDomainModel {

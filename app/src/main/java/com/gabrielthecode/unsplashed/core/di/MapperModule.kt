@@ -13,10 +13,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object MapperModule {
-
-    @Singleton
-    @Provides
-    fun provideSearchResponseMapper(): EntityMapper<SearchResponse, SearchDomainModel> {
-        return SearchMapper()
-    }
+	@Singleton
+	@Provides
+	fun provideSearchResponseMapper(): EntityMapper<SearchResponse, SearchDomainModel> {
+		return SearchMapper()
+	}
 }

@@ -15,6 +15,7 @@ Unsplashed is a lightweight app to demonstrate the usage of Unsplash API to retr
 - Use an API key as query parameter to be able to get images from the API
 - Ability to search images by entering keywords
 - Display a screen that show informations about a selected image (resolution, author, description, dominant color)
+- Download images in Hi-Res format
 
 <a name="screenshots"></a>
 
@@ -36,7 +37,8 @@ Unsplashed is a lightweight app to demonstrate the usage of Unsplash API to retr
 
 - [x] Search app with High resolution image display 
 - [x] Retrieve images, with details (resolution, author, description, dominant color)
-- [x] Realtime search 
+- [x] Realtime search
+- [x] High Resolution Image download
 - [x] Clean design
 - [x] MVVM with Clean Architecture
 

@@ -9,15 +9,13 @@ import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface UnsplashApi {
+	@Headers("Accept-Version: v1")
+	@GET("search/photos")
+	suspend fun searchPhotos(
+		@Query("query") query: String?,
+		@Query("per_page") pageSize: Int = 30
+	): SearchResponse
 
-    @Headers("Accept-Version: v1")
-    @GET("search/photos")
-    suspend fun searchPhotos(
-        @Query("query") query: String?,
-        @Query("per_page") pageSize: Int = 30
-    ): SearchResponse
-
-    @GET
-    suspend fun downloadPhoto(@Url url: String): Response<ResponseBody>
-
+	@GET
+	suspend fun downloadPhoto(@Url url: String): Response<ResponseBody>
 }

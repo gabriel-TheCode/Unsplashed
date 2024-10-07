@@ -6,18 +6,17 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 
 class UnsplashApiRemoteServiceImpl(
-    private val unsplashApi: UnsplashApi
+	private val unsplashApi: UnsplashApi
 ) : UnsplashApiRemoteService {
+	override suspend fun searchPhotos(
+		query: String
+	): SearchResponse {
+		return unsplashApi.searchPhotos(query)
+	}
 
-    override suspend fun searchPhotos(
-        query: String
-    ): SearchResponse {
-        return unsplashApi.searchPhotos(query)
-    }
-
-    override suspend fun downloadPhoto(
-        url: String
-    ): Response<ResponseBody> {
-        return unsplashApi.downloadPhoto(url)
-    }
+	override suspend fun downloadPhoto(
+		url: String
+	): Response<ResponseBody> {
+		return unsplashApi.downloadPhoto(url)
+	}
 }

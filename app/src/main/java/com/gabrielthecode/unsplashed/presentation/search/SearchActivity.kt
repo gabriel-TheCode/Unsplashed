@@ -26,6 +26,7 @@ class SearchActivity : AppCompatActivity() {
 	private var binding: ActivitySearchBinding? = null
 	private lateinit var recyclerViewAdapter: PhotoRecyclerViewAdapter
 	private var previewManager: PreviewManager? = null
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
