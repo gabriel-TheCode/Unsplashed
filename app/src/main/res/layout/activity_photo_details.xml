@@ -17,12 +17,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic"/>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/shadow_shape_transparent"
+            android:background="@drawable/shadow_shape_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,8 +30,8 @@
             <LinearLayout
                 android:id="@+id/authorLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:layout_gravity="end"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
                 android:layout_marginHorizontal="16dp"
                 android:gravity="center">
 
@@ -51,6 +51,39 @@
 
             </LinearLayout>
 
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shadow_shape_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imageHeader">
+
+            <LinearLayout
+                android:id="@+id/likesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/sharp_favorite_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/likesTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/white"
+                    android:text="15 likes" />
+
+            </LinearLayout>
         </FrameLayout>
 
         <RelativeLayout

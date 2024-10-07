@@ -23,83 +23,81 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+	private const val BASE_URL = "https://api.unsplash.com/"
+	private const val CLIENT_ID_QUERY = "client_id"
+	private const val REQUEST_TIMEOUT = 60
 
-    private const val BASE_URL = "https://api.unsplash.com/"
-    private const val CLIENT_ID_QUERY = "client_id"
-    private const val REQUEST_TIMEOUT = 60
+	@Singleton
+	@Provides
+	fun provideGsonBuilder(): Gson {
+		return GsonBuilder().create()
+	}
 
-    @Singleton
-    @Provides
-    fun provideGsonBuilder(): Gson {
-        return GsonBuilder().create()
-    }
+	@Singleton
+	@Provides
+	fun provideRetrofit(gson: Gson): Retrofit.Builder {
+		return Retrofit.Builder()
+			.baseUrl(BASE_URL)
+			.addConverterFactory(GsonConverterFactory.create(gson))
+			.client(getOkHttpService())
+	}
 
-    @Singleton
-    @Provides
-    fun provideRetrofit(gson: Gson): Retrofit.Builder {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(getOkHttpService())
-    }
+	@Singleton
+	@Provides
+	fun provideUnsplashService(retrofit: Retrofit.Builder): UnsplashApi {
+		return retrofit
+			.build()
+			.create(UnsplashApi::class.java)
+	}
 
-    @Singleton
-    @Provides
-    fun provideUnsplashService(retrofit: Retrofit.Builder): UnsplashApi {
-        return retrofit
-            .build()
-            .create(UnsplashApi::class.java)
-    }
+	@Singleton
+	@Provides
+	fun provideRemoteService(
+		api: UnsplashApi
+	): UnsplashApiRemoteService {
+		return UnsplashApiRemoteServiceImpl(api)
+	}
 
-    @Singleton
-    @Provides
-    fun provideRemoteService(
-        api: UnsplashApi
-    ): UnsplashApiRemoteService {
-        return UnsplashApiRemoteServiceImpl(api)
-    }
+	@Singleton
+	@Provides
+	fun provideRemoteDataSource(
+		remoteService: UnsplashApiRemoteService,
+		searchMapper: SearchMapper
+	): RemoteDataSourceImpl {
+		return RemoteDataSourceImpl(
+			remoteService,
+			searchMapper
+		)
+	}
 
-    @Singleton
-    @Provides
-    fun provideRemoteDataSource(
-        remoteService: UnsplashApiRemoteService,
-        searchMapper: SearchMapper
-    ): RemoteDataSourceImpl {
-        return RemoteDataSourceImpl(
-            remoteService,
-            searchMapper
-        )
-    }
+	private fun getOkHttpService(): OkHttpClient {
+		val httpClient: OkHttpClient.Builder = OkHttpClient.Builder()
+			.connectTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+			.readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+			.writeTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+		if (BuildConfig.DEBUG) {
+			val interceptor = HttpLoggingInterceptor()
+			interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+			httpClient.addInterceptor(interceptor)
+		}
 
-    private fun getOkHttpService(): OkHttpClient {
-        val httpClient: OkHttpClient.Builder = OkHttpClient.Builder()
-            .connectTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .writeTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
-        if (BuildConfig.DEBUG) {
-            val interceptor = HttpLoggingInterceptor()
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            httpClient.addInterceptor(interceptor)
-        }
+		httpClient.addInterceptor(BasicAuthInterceptor())
 
-        httpClient.addInterceptor(BasicAuthInterceptor())
+		return httpClient.build()
+	}
 
-        return httpClient.build()
-    }
-
-    class BasicAuthInterceptor : Interceptor {
-        @Throws(IOException::class)
-        override fun intercept(chain: Chain): Response {
-            val request = chain.request()
-            val newUrl =
-                request.url.newBuilder().addQueryParameter(CLIENT_ID_QUERY, BuildConfig.CLIENT_ID)
-                    .build()
-            val newRequest = request.newBuilder().url(newUrl).build()
-            return chain.proceed(newRequest)
-        }
-    }
+	class BasicAuthInterceptor : Interceptor {
+		@Throws(IOException::class)
+		override fun intercept(chain: Chain): Response {
+			val request = chain.request()
+			val newUrl =
+				request.url.newBuilder().addQueryParameter(CLIENT_ID_QUERY, BuildConfig.CLIENT_ID)
+					.build()
+			val newRequest = request.newBuilder().url(newUrl).build()
+			return chain.proceed(newRequest)
+		}
+	}
 }

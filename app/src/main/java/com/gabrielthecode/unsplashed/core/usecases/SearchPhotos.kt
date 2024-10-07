@@ -10,21 +10,21 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class SearchPhotos @Inject constructor(
-    private val repository: SearchPhotosRepository
+	private val repository: SearchPhotosRepository
 ) {
-    suspend fun searchPhotos(
-        query: String
-    ): Flow<Resource<SearchDomainModel>> = flow {
-        emit(Resource.loading())
-        try {
-            val data = repository.searchPhotos(query)
-            if (data.results?.isEmpty() == true) {
-                emit(Resource.Failure(Exception("No result found")))
-            } else {
-                emit(Resource.Success(data))
-            }
-        } catch (e: Exception) {
-            emit(Resource.Failure(Exception(e.message)))
-        }
-    }.flowOn(Dispatchers.IO)
+	operator fun invoke(
+		query: String
+	): Flow<Resource<SearchDomainModel>> = flow {
+		emit(Resource.loading())
+		try {
+			val data = repository.searchPhotos(query)
+			if (data.results?.isEmpty() == true) {
+				emit(Resource.Failure(Exception("No result found")))
+			} else {
+				emit(Resource.Success(data))
+			}
+		} catch (e: Exception) {
+			emit(Resource.Failure(e))
+		}
+	}.flowOn(Dispatchers.IO)
 }
