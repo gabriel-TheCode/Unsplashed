@@ -1,4 +1,4 @@
-package com.gabrielthecode.unsplashed.utils.extensions
+package com.gabrielthecode.unsplashed.utils
 
 import java.text.SimpleDateFormat
 import java.util.TimeZone
@@ -10,7 +10,7 @@ fun String.transformToDate(): String? {
         inputFormat.timeZone = TimeZone.getTimeZone("UTC") // Assuming input is in UTC
 
         // Output format
-        val outputFormat = SimpleDateFormat("dd/MM/YYYY HH:mm")
+        val outputFormat = SimpleDateFormat("dd/MM/YYYY, HH:mm")
         outputFormat.timeZone = TimeZone.getDefault() // Use the local time zone
 
         val date = inputFormat.parse(this)

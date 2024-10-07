@@ -6,5 +6,9 @@
     <string name="dominant_color">Dominant color : %s</string>
     <string name="created_at">Creation date : %s</string>
     <string name="search_photos">Search Photos</string>
-    <string name="coming_soon">Coming soon ! 🌄</string>
+    <string name="downloading">Downloading...</string>
+    <string name="failed_to_download_image">Failed to download image: %1$s</string>
+    <string name="image_saved">"Image saved to Pictures/Unsplashed 🌄"</string>
+    <string name="failed_to_save_image">Failed to save image: %1$s</string>
+    <string name="permission_denied">Permission Denied</string>
 </resources>

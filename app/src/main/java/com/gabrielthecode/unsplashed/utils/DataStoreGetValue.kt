@@ -1,4 +1,4 @@
-package com.gabrielthecode.unsplashed.utils.extensions
+package com.gabrielthecode.unsplashed.utils
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

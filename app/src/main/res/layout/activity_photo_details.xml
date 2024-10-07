@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageHeader"
             android:layout_width="match_parent"
@@ -17,12 +18,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic"/>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/shadow_shape_transparent"
+            android:background="@drawable/shadow_shape_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -50,6 +51,16 @@
                     android:text="John Doe" />
 
             </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shadow_shape_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         </FrameLayout>
 

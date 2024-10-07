@@ -12,7 +12,7 @@ import javax.inject.Inject
 class SearchPhotos @Inject constructor(
     private val repository: SearchPhotosRepository
 ) {
-    suspend fun searchPhotos(
+    operator fun invoke(
         query: String
     ): Flow<Resource<SearchDomainModel>> = flow {
         emit(Resource.loading())
@@ -24,7 +24,7 @@ class SearchPhotos @Inject constructor(
                 emit(Resource.Success(data))
             }
         } catch (e: Exception) {
-            emit(Resource.Failure(Exception(e.message)))
+            emit(Resource.Failure(e))
         }
     }.flowOn(Dispatchers.IO)
 }
