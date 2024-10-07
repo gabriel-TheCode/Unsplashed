@@ -11,4 +11,8 @@
     <string name="image_saved">"Image saved to Pictures/Unsplashed 🌄"</string>
     <string name="failed_to_save_image">Failed to save image: %1$s</string>
     <string name="permission_denied">Permission Denied</string>
+    <plurals name="likes">
+        <item quantity="one">%d like</item>
+        <item quantity="other">%d likes</item>
+    </plurals>
 </resources>

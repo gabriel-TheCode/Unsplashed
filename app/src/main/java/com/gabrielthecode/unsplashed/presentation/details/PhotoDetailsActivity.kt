@@ -74,6 +74,7 @@ class PhotoDetailsActivity : AppCompatActivity() {
 				descriptionTextView.text = description
 				dateTextView.text = getString(R.string.created_at, creationDate.transformToDate())
 				colorTextView.text = getString(R.string.dominant_color, dominantColor)
+				likesTextView.text = resources.getQuantityString(R.plurals.likes, likes, likes)
 				colorImageView.setBackgroundColor(Color.parseColor(dominantColor))
 			}
 
